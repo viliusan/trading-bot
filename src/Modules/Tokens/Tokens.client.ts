@@ -1,21 +1,19 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
+import PancakeSwapClient from '../../PancakeSwap';
+
 import { TokenData } from './types';
 
-export default class TokensClient {
-  private client: AxiosInstance;
-
+export default class TokensClient extends PancakeSwapClient {
   constructor() {
-    this.client = axios.create({
-      baseURL: 'https://api.pancakeswap.info/api/v2/tokens',
-    });
+    super();
   }
 
   public async getAllTokens() {
     try {
-      const tokens: AxiosResponse<TokenData[]> = await this.client.get('');
+      const { data }: AxiosResponse<TokenData[]> = await this.client.get('');
 
-      return tokens;
+      return data;
     } catch (error) {
       console.error(error);
       throw new Error('Error while fetching tokens');
@@ -24,9 +22,9 @@ export default class TokensClient {
 
   public async getTokenById(id: string) {
     try {
-      const token: AxiosResponse<TokenData> = await this.client.get(`${id}`);
+      const { data }: AxiosResponse<TokenData> = await this.client.get(id);
 
-      return token;
+      return data;
     } catch (error) {
       console.error(error);
       throw new Error('Error while fetching token by id');

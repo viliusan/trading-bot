@@ -1,21 +1,19 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
+import PancakeSwapClient from '../../PancakeSwap';
+
 import { SummaryData } from './types';
 
-export default class SummaryClient {
-  private client: AxiosInstance;
-
+export default class SummaryClient extends PancakeSwapClient {
   constructor() {
-    this.client = axios.create({
-      baseURL: 'https://api.pancakeswap.info/api/v2/summary',
-    });
+    super();
   }
 
   public async getSummary() {
     try {
-      const summary: AxiosResponse<SummaryData[]> = await this.client.get('');
+      const { data }: AxiosResponse<SummaryData[]> = await this.client.get('');
 
-      return summary;
+      return data;
     } catch (error) {
       console.error(error);
       throw new Error('Error while fetching pairs');

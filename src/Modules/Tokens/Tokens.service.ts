@@ -4,14 +4,14 @@ export default class CrewService {
   constructor(private readonly tokensClient: TokensClient = new TokensClient()) {}
 
   public async findAllTokens() {
-    const { data } = await this.tokensClient.getAllTokens();
+    const tokens = await this.tokensClient.getAllTokens();
 
-    return data;
+    return tokens;
   }
 
   public async findTokenById(id: string) {
-    const { data } = await this.tokensClient.getTokenById(id);
+    const token = await this.tokensClient.getTokenById(id);
 
-    return data;
+    return token;
   }
 }

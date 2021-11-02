@@ -4,8 +4,8 @@ export default class PairsService {
   constructor(private readonly pairsClient: PairsClient = new PairsClient()) {}
 
   public async findAllPairs() {
-    const { data } = await this.pairsClient.getAllPairs();
+    const pairs = await this.pairsClient.getAllPairs();
 
-    return data;
+    return pairs;
   }
 }
