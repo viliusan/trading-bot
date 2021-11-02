@@ -6,7 +6,7 @@ import { TokenData } from './types';
 
 export default class TokensClient extends PancakeSwapClient {
   constructor() {
-    super();
+    super('tokens');
   }
 
   public async getAllTokens() {

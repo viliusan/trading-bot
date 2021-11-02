@@ -6,7 +6,7 @@ import { SummaryData } from './types';
 
 export default class SummaryClient extends PancakeSwapClient {
   constructor() {
-    super();
+    super('summary');
   }
 
   public async getSummary() {

@@ -6,7 +6,7 @@ import { PairsData } from './types';
 
 export default class PairsClient extends PancakeSwapClient {
   constructor() {
-    super();
+    super('pairs');
   }
 
   public async getAllPairs() {
